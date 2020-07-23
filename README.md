@@ -10,5 +10,10 @@
 # UI Views
 
 ## Write First Flutter Application Part1
-![alt text](https://github.com/VBT-Intership/KadirHaktanYucesoy-s-Flutter-Codelab-Missions/blob/master/img/first-app-image.PNG)
+<div align="center">
+ <img src=https://github.com/VBT-Intership/KadirHaktanYucesoy-s-Flutter-Codelab-Missions/blob/master/img/first-app-image.PNG>
+</div>
+
+#
+
 
