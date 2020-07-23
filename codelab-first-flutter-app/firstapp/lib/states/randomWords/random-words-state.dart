@@ -3,38 +3,36 @@ import 'package:firstapp/components/custom-widgets/random-words/random-words-wid
 import 'package:firstapp/core/constables/double-size-values.dart';
 import 'package:flutter/material.dart';
 
-class RandomWordState extends State<RandomWordsWidget> {
-  final padding = sizeValues["padding"];
-  final fontsize = sizeValues["fontSize"];
+final padding = sizeValues["padding"];
+final fontSize = sizeValues["fontSize"];
 
+class RandomWordState extends State<RandomWordsWidget> {
   final List<WordPair> _suggestions = <WordPair>[];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Startup Generator Name")),
-      body: buildSuggestions(),
-    );
+        appBar: AppBar(title: Text("Startup Generator Name")),
+        body: buildSuggestionList(_suggestions));
   }
+}
 
-  Widget buildSuggestions() {
-    return ListView.builder(itemBuilder: (context, i) {
-      if (i.isOdd) return Divider();
+Widget buildSuggestionList(List<WordPair> lists) {
+  return ListView.builder(itemBuilder: (context, i) {
+    if (i.isOdd) return Divider();
 
-      final index = i ~/ 2;
+    final index = i ~/ 2;
 
-      if (index >= _suggestions.length) {
-        _suggestions.addAll(generateWordPairs().take(10));
-      }
+    if (index >= lists.length) {
+      lists.addAll(generateWordPairs().take(10));
+    }
 
-      return buildRow(_suggestions[index]);
-    });
-  }
+    return buildRow(lists[index], fontSize["default"]);
+  });
+}
 
-  Widget buildRow(WordPair pair) {
-    return ListTile(
-      title: Text(pair.asPascalCase,
-          style: TextStyle(fontSize: fontsize["default"])),
-    );
-  }
+Widget buildRow(WordPair pair, double size) {
+  return ListTile(
+    title: Text(pair.asPascalCase, style: TextStyle(fontSize: size)),
+  );
 }
